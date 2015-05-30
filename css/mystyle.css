@@ -1,0 +1,69 @@
+li{
+    list-style: none;
+
+}
+
+
+.custom-section{
+    height: auto;
+    min-height: 100%;
+    padding-top: 100px;
+    background: #eee;
+}
+.custom-section h1{
+    text-align: center;
+}
+
+.custom-section:nth-child(even) {
+    //background-color: #FFF;
+}
+.custom-section .container {
+    background-color: #FFF;
+
+}
+.intro-section{
+    color: white;
+    text-shadow: #080808 2px 2px;
+    background-image: url("../imgs/gaaBackground.jpg");}
+
+.intro-section h1{
+    font-size: 5em;
+    color: white;
+    text-shadow: #080808 4px 4px;
+
+}
+
+.navbar-brand {
+    height: auto;
+
+}
+.navbar-brand a{
+    width: 100px;
+
+}
+.navbar-brand img{
+    height: 50px;
+
+}
+
+table td{
+    padding-left: 10px;
+}
+
+#slideshow-container{
+    text-align: center;
+    padding-bottom: 20px;
+
+
+
+}
+.grey{
+    color: #8a8a8a;
+}
+#leagueHeading{
+    color:#14587D;
+}
+
+thead{
+    font-weight: bold;
+}

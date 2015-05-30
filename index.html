@@ -1,0 +1,254 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Gaa Website</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Template Custom CSS -->
+    <link href="css/scrolling-nav.css" rel="stylesheet">
+
+    <!-- My Custom CSS -->
+    <link href="css/mystyle.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<!-- The #page-top ID is part of the scrolling feature - the data-spy and data-target are part of the built-in Bootstrap scrollspy function
+
+REFERENCE: Bootstrap scrolling nav bar template retrieved from: http://startbootstrap.com/template-overviews/scrolling-nav/
+
+-->
+
+<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+
+                <a class="navbar-brand page-scroll" href="#page-top"><img src="imgs/GAA.png"></a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse navbar-ex1-collapse">
+                <ul class="nav navbar-nav">
+                    <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
+                    <li class="hidden">
+                        <a class="page-scroll" href="#page-top"></a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#news">News</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#weather">Weather</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#table">League Table</a>
+                    </li>
+                    <li>
+                        <a id="resultsLink" class="page-scroll" href="#results">Results</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#createFixtures">Create Fixtures</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#sponsors">Sponsors</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+    <!-- Intro Section -->
+    <section id="intro" class="intro-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1>Welcome</h1>
+                    <p>Hello!</p>
+                    <p>This entire web application runs on one HTML page.</p>
+                    <p>Click the links in the navigation to quickly scroll between the sections.</p>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- news Section -->
+    <section id="news" class="custom-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1>News </h1>
+                    <p>Use the radio boxes to pull the latest news updates from <a target="_blank" href="http://www.rte.ie/sport/gaa/">RTE</a> or <a target="_blank" href="https://www.gaa.ie/gaa-news-and-videos/">Gaa.ie</a> via ajax</p>
+                    <form name="myForm">
+                        <input id="gaanews" type="radio" selected value="gaa" name="rss" onclick="getRSSFeed('https://www.gaa.ie/rss/news/');"/> GAA.ie News
+                        <input type="radio" value="rte" name="rss" onclick="getRSSFeed('http://www.rte.ie/rss/gaa.xml');"/> RTE GAA News
+
+                    </form>
+
+                    <div class="rssfeed">
+                        <ul id="newsFeed"></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- weather Section -->
+    <section id="weather" class="custom-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1>Weather</h1>
+                    <select id="weatherSelect">
+                    </select>
+                    <div id="weatherAjax"></div>
+                    <span class="grey">Weather retrieved via ajax from <a target="_blank" href="http://openweathermap.org/">openweathermap.org</a></span>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- table Section -->
+    <section id="table" class="custom-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1>Current Table </h1>
+
+                    <div id="leagueTable">
+                        <a class="page-scroll" href="#createFixtures"><h1>No Results Yet! Click to create fixtures</h1></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- results Section -->
+    <section id="results" class="custom-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1>Results </h1>
+                    <select id="leagueSelect"></select>
+                    Select a league to past league from the
+                    archive to view the results. Note all leagues are
+                    lost on page refresh. Click
+                    <a class="page-scroll" href="#createFixtures">here</a> to
+                    create new league. Click <a class="page-scroll" href="#table">here</a> to view the league table of the most recent League.
+                    <div id="resultsTable">
+                        <a class="page-scroll" href="#createFixtures"><h1>No Results Yet! Click to create fixtures</h1></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- matchmaking Section -->
+    <section id="createFixtures" class="custom-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1>Create Fixtures </h1>
+                    <p>Create a <a href="http://en.wikipedia.org/wiki/Round-robin_tournament" target="_blank">round robin</a> tournament using the form below:</p>
+                    <form>
+                                <label for="numberTeams">Number of Teams</label>
+                                <select id="numberTeams" name="numberTeams">
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                </select>
+
+                        <ul id="teamTextBoxes">
+                            <li>
+                                <label for="team1">Team 1</label>
+                                <input type="text" name="team1" id="team1" value="" >
+                        </li>
+                            <li>
+                                <label for="team2">Team 2</label>
+                                <input type="text" name="team2" id="team2" value="">
+                            </li>
+                            <li>
+                                <label for="team3">Team 3</label>
+                                <input type="text" name="team3" id="team3" value="">
+                            </li>
+                            <li>
+                                <label for="team4">Team 4</label>
+                                <input type="text" name="team4" id="team4" value="">
+                        </li>
+                        </ul>
+
+
+
+                    </form>
+                    <button id="genFixtures">Generate Fixtures</button>
+                </div>
+            </div>
+            <div id="fixtures"></div>
+        </div>
+    </section>
+
+    <!-- sponsors Section -->
+    <section id="sponsors" class="custom-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1>Proudly Sponsored by </h1>
+                    <div id="slideshow-container">
+                        <img src="imgs/Three-logo.jpg" id="slideshow">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+    <!-- Scrolling Nav JavaScript -->
+    <script src="js/jquery.easing.min.js"></script>
+    <script src="js/scrolling-nav.js"></script>
+
+    <!-- Ajax JavaScript -->
+    <script src="js/main.js"></script>
+
+
+</body>
+
+</html>
